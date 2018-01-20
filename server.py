@@ -2,13 +2,13 @@
 main server
 '''
 
-from flask import Flask, request, session, url_for, redirect
+from flask import Flask, request, session, url_for, redirect, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def root():
-    return ""
+    return render_template("index.html")
 
 @app.route("/process_menu", methods=['GET', 'POST'])
 def process_img():
