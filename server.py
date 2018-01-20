@@ -3,6 +3,13 @@ main server
 '''
 
 from flask import Flask, request, session, url_for, redirect, render_template
+import json
+import re
+import cStringIO
+
+from PIL import Image
+
+from util import *
 
 app = Flask(__name__)
 
@@ -34,7 +41,18 @@ def process_img():
         - Img
         - Tapped coordinate
     '''
-    pass
+    if request.method == 'GET':
+        return json.dumps({'response': 'invalid call'})
+    else:
+        img = request.form['image']
+        image_data = re.sub('^data:image/.+;base64,', '', img).decode('base64')
+        image = Image.open(cStringIO.StringIO(image_data))
+        x = request.form['x']
+        y = request.form['y']
+
+        out_result = process_info(image, x, y)
+
+    return json.dumps({'status': 'success', 'result': out_result})
 
 @app.route("/recommend", methods=['GET', 'POST'])
 def recommend():

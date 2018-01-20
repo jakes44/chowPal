@@ -109,8 +109,7 @@ def get_similarity_rankings(me, others, db_manager):
     return sorted(filter(lambda item: item[1] > SIM_CUT_OFF, zip(others,
         others_scores)), key=lambda item: item[1], reverse=True)
 
-def sim_recommend_dish(did):
-    f
+def process_info(image, x, y):
 
 if __name__ == '__main__':
     print get_gimage_link("bibimbap")

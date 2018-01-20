@@ -94,15 +94,43 @@ function onHold(e) {
         //     xhr.send(fd);
         // };      
         // reader.readAsDataURL(blob);
+        
+        var reader = new FileReader()
 
-        var xhr = new XMLHttpRequest();
-        var fd = new FormData();
-        fd.append('image', blob);
-        fd.append('x', x);
-        fd.append('y', y);
-        console.log(fd);
-        xhr.open('POST', '/process_menu', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(fd);
+        reader.onload = function(event) {
+            var fd = new FormData();
+            fd.append('x', x);
+            fd.append('y', y);
+            fd.append('image', event.target.result);
+
+            $.ajax({
+                type: 'POST',
+                url: '/process_menu',
+                data: fd,
+                processData: false,
+                contentType: false
+            }).done(function(data) {
+                console.log(data);
+            });
+        };
+
+        reader.readAsDataURL(blob)
+
+        //var xhr = new XMLHttpRequest();
+        //xhr.open('POST', '/process_menu', true);
+        //var fd = {
+        //    'image': blob,
+        //    'x': x,
+        //    'y': y
+        //};
+        //var fd = new FormData();
+        //fd.set('image', blob);
+        //fd.set('x', x);
+        //fd.set('y', y);
+        //console.log("HIIII")
+        //console.log(fd);
+        //xhr.setRequestHeader('Content-Type', 'application/json');
+        //console.log(fd)
+        //xhr.send(JSON.stringify(fd));
     }, 'image/jpeg');
 }
