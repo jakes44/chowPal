@@ -4,11 +4,13 @@ Various utility functions used in flask server
 import requests
 import time
 import os
+import sqlite
 
 from PIL import Image
 from StringIO import StringIO
 
 GOOGLE_IMG_URL="https://www.google.com/search?tbm=isch&q={query}"
+db
 
 def get_next_item(page):
     start = page.find('rg_di')
@@ -60,6 +62,12 @@ def get_similarity_rankings(me, others, db_manager):
     """
     my_hist = db_manager.get_order_history()
     pass
+
+def get_order_history(uid):
+  db = sqlite3.connect('DB/chow.db')
+  c = db.cursor()
+
+  return c.execute("select did,rating from choices where uid=?",(uid,)).fetchall()
 
 
 if __name__ == '__main__':
