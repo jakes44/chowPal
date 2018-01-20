@@ -4,6 +4,7 @@ Various utility functions used in flask server
 import requests
 import time
 import os
+import db_manager
 
 from PIL import Image
 from StringIO import StringIO
