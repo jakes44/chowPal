@@ -42,6 +42,6 @@ function touchEnd(e) {
 
 // Hold timer triggers coordinate log
 function onHold(e) {
-    console.log(e.touches[0].clientX, e.touches[0].clientY+yOffset);
+    console.log(e.touches[0].clientX, e.touches[0].clientY);
     context.drawImage(video, 0, 0, 640, 480);
 }
