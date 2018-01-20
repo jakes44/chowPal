@@ -68,4 +68,41 @@ function onHold(e) {
     var x = parseInt(parseFloat(e.touches[0].clientX + xOffset)/ratio);
     var y = parseInt(parseFloat(e.touches[0].clientY + yOffset)/ratio);
     console.log(x, y);
+    context.drawImage(video, 0, 0, vidWidth, vidHeight);
+    canvas.toBlob(function(blob) {
+        // Debug stuff
+        console.log(blob);
+        img = new Image();
+        img.src = URL.createObjectURL(blob);
+        console.log(img);
+        document.body.appendChild(img);
+        // context.drawImage(img, 0, 0, vidWidth, vidHeight);
+        // End Debug
+        // Post request
+
+        // var reader = new FileReader();
+        // reader.onload = function(event){
+        //     var fd = new FormData();
+        //     fd.append('fname', 'image.jpg');
+        //     fd.append('data', event.target.result);
+        //     fd.append('x', x);
+        //     fd.append('y', y);
+        //     var xhr = new XMLHttpRequest();
+        //     console.log(fd);
+        //     xhr.open('POST', '/process_menu', true);
+        //     xhr.setRequestHeader('Content-Type', 'application/json');
+        //     xhr.send(fd);
+        // };      
+        // reader.readAsDataURL(blob);
+
+        var xhr = new XMLHttpRequest();
+        var fd = new FormData();
+        fd.append('image', blob);
+        fd.append('x', x);
+        fd.append('y', y);
+        console.log(fd);
+        xhr.open('POST', '/process_menu', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(fd);
+    }, 'image/jpeg');
 }
