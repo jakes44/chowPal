@@ -3,12 +3,32 @@ main server
 '''
 
 from flask import Flask, request, session, url_for, redirect, render_template
+import json
+import re
+import cStringIO
+
+from PIL import Image
+
+from util import *
 
 app = Flask(__name__)
 
 @app.route("/")
 def root():
     return render_template("index.html")
+
+@app.route("/init", methods=['GET', 'POST'])
+def ping():
+    '''
+    Initializes the session more or less
+
+    Called when the session loads
+
+    Necessary args in POST request:
+        - UID
+        - Geo-coordinate
+    '''
+    pass
 
 @app.route("/process_menu", methods=['GET', 'POST'])
 def process_img():
@@ -18,11 +38,21 @@ def process_img():
     Activated when tapped on menu
 
     Necessary args in POST request:
-        - UID
         - Img
         - Tapped coordinate
     '''
-    pass
+    if request.method == 'GET':
+        return json.dumps({'response': 'invalid call'})
+    else:
+        img = request.form['image']
+        image_data = re.sub('^data:image/.+;base64,', '', img).decode('base64')
+        image = Image.open(cStringIO.StringIO(image_data))
+        x = request.form['x']
+        y = request.form['y']
+
+        out_result = process_info(image, x, y)
+
+    return json.dumps({'status': 'success', 'result': out_result})
 
 @app.route("/recommend", methods=['GET', 'POST'])
 def recommend():
@@ -33,7 +63,6 @@ def recommend():
     Activated upon ``recommend'' feature being used
 
     Necessary args in POST request:
-        - UID
         - Img
         - Tapped coordinate
         - Mode
@@ -46,7 +75,6 @@ def simple_feedback():
     Handles immediate yes/no feedback from the user
     
     Necessary args in POST request:
-        - UID
         - DID
         - type of feedback (good or bad)
     '''
@@ -58,7 +86,6 @@ def review():
     Handles user review
     
     Necessary args in POST request:
-        - UID
         - DID
         - star rating
     '''
