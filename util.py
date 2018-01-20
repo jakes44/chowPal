@@ -12,6 +12,9 @@ from StringIO import StringIO
 GOOGLE_IMG_URL="https://www.google.com/search?tbm=isch&q={query}"
 db
 
+THRESHOLD = 100 # datapoint needed before computing similarity
+SIM_CUT_OFF = 0.2 # minimum similarity index required to be considered ``similar''
+
 def get_next_item(page):
     start = page.find('rg_di')
 
@@ -47,6 +50,43 @@ def get_first_n_results(keyword, n):
 def get_gimage_link(keyword):
     return get_first_n_results(keyword, 1)[0]
 
+def aggregate_orders(orders):
+    '''
+    returns a dictionary based on the list of orders that maps did -> aggregated
+    score (+)
+    '''
+    out_dict = {}
+
+    for did, rating in orders:
+        if did not in out_dict:
+            out_dict[did] = rating
+        else:
+            out_dict[did] += rating
+
+    return out_dict
+
+def compute_similarity(hist1, hist2):
+    '''
+    computes similarity between two history objects
+    '''
+    if len(hist1) < THRESHOLD or len(hist2) < THRESHOLD:
+        return float('-inf')
+    sim_score = 0
+    for did in hist1:
+        if did in hist2:
+            score1 = hist1[did]
+            score2 = hist2[did]
+
+            if score1 * score2 > 0: # same sign
+                sim_score += min(abs(score1), abs(score2))
+            else: # diff sign
+                sim_score -= abs(score1 - score2)
+
+    sim_score /= len(hist1)
+    sim_score /= len(hist2)
+
+    return sim_score
+
 def get_similarity_rankings(me, others, db_manager):
     """
     get_similarity_rankings: ranks the others in order of similarity to me
@@ -60,8 +100,16 @@ def get_similarity_rankings(me, others, db_manager):
         the list of others in order of similarity to me, from most similar to
         least similar
     """
-    my_hist = db_manager.get_order_history()
-    pass
+    my_hist = aggregate_orders(db_manager.get_order_history(me))
+    others_list = map(lambda uid:
+            aggregate_orders(db_manager.get_order_history(uid)),
+            others)
+
+    others_scores = map(lambda hist: compute_similarity(hist, my_hist),
+            others_list)
+
+    return sorted(filter(lambda item: item[1] > SIM_CUT_OFF, zip(others,
+        others_scores)), key=lambda item: item[1], reverse=True)
 
 def get_order_history(uid):
   db = sqlite3.connect('DB/chow.db')
@@ -69,6 +117,8 @@ def get_order_history(uid):
 
   return c.execute("select did,rating from choices where uid=?",(uid,)).fetchall()
 
+def sim_recommend_dish(did):
+    f
 
 if __name__ == '__main__':
     print get_gimage_link("bibimbap")
