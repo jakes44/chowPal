@@ -8,6 +8,8 @@ import os
 from PIL import Image
 from StringIO import StringIO
 
+from ocr_utils import *
+
 GOOGLE_IMG_URL="https://www.google.com/search?tbm=isch&q={query}"
 
 THRESHOLD = 100 # datapoint needed before computing similarity
@@ -109,9 +111,10 @@ def get_similarity_rankings(me, others, db_manager):
     return sorted(filter(lambda item: item[1] > SIM_CUT_OFF, zip(others,
         others_scores)), key=lambda item: item[1], reverse=True)
 
-def process_info(image, x, y):
-    
-    pass
+def process_info(image, x, y): 
+    strings = img2str(image)
+    boxes = img2boxes(image)
+    return {'strs': strings, 'boxes': boxes}
 
 if __name__ == '__main__':
     print get_gimage_link("bibimbap")
