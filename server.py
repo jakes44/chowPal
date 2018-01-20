@@ -10,6 +10,10 @@ app = Flask(__name__)
 def root():
     return render_template("index.html")
 
+@app.route("/ping", methods=['GET', 'POST'])
+def ping():
+    pass
+
 @app.route("/process_menu", methods=['GET', 'POST'])
 def process_img():
     '''
