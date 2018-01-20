@@ -6,8 +6,6 @@ from flask import Flask, request, session, url_for, redirect
 
 app = Flask(__name__)
 
-session['UID'] = 0
-
 @app.route("/")
 def root():
     return ""
@@ -54,7 +52,7 @@ def simple_feedback():
     '''
     pass
 
-@app.route("/review", method=['GET', 'POST'])
+@app.route("/review", methods=['GET', 'POST'])
 def review():
     '''
     Handles user review
