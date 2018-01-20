@@ -5,6 +5,7 @@ import requests
 import time
 import os
 
+import PIL
 from PIL import Image
 from StringIO import StringIO
 
@@ -112,9 +113,17 @@ def get_similarity_rankings(me, others, db_manager):
         others_scores)), key=lambda item: item[1], reverse=True)
 
 def process_info(image, x, y): 
-    strings = img2str(image)
-    boxes = img2boxes(image)
-    return {'strs': strings, 'boxes': boxes}
+    output = get_text_info(image)
+
+    draw = PIL.ImageDraw.Draw(image)
+
+    for (sent, (l, t, w, h)) in output:
+        print sent
+        draw.rectangle([l, t, l+w, t+h], outline=128)
+
+    image.show()
+    
+    return ""
 
 if __name__ == '__main__':
     print get_gimage_link("bibimbap")
