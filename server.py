@@ -10,8 +10,17 @@ app = Flask(__name__)
 def root():
     return render_template("index.html")
 
-@app.route("/ping", methods=['GET', 'POST'])
+@app.route("/init", methods=['GET', 'POST'])
 def ping():
+    '''
+    Initializes the session more or less
+
+    Called when the session loads
+
+    Necessary args in POST request:
+        - UID
+        - Geo-coordinate
+    '''
     pass
 
 @app.route("/process_menu", methods=['GET', 'POST'])
@@ -22,7 +31,6 @@ def process_img():
     Activated when tapped on menu
 
     Necessary args in POST request:
-        - UID
         - Img
         - Tapped coordinate
     '''
@@ -37,7 +45,6 @@ def recommend():
     Activated upon ``recommend'' feature being used
 
     Necessary args in POST request:
-        - UID
         - Img
         - Tapped coordinate
         - Mode
@@ -50,7 +57,6 @@ def simple_feedback():
     Handles immediate yes/no feedback from the user
     
     Necessary args in POST request:
-        - UID
         - DID
         - type of feedback (good or bad)
     '''
@@ -62,7 +68,6 @@ def review():
     Handles user review
     
     Necessary args in POST request:
-        - UID
         - DID
         - star rating
     '''
