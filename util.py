@@ -4,11 +4,13 @@ Various utility functions used in flask server
 import requests
 import time
 import os
+import sqlite
 
 from PIL import Image
 from StringIO import StringIO
 
 GOOGLE_IMG_URL="https://www.google.com/search?tbm=isch&q={query}"
+db
 
 THRESHOLD = 100 # datapoint needed before computing similarity
 SIM_CUT_OFF = 0.2 # minimum similarity index required to be considered ``similar''
@@ -109,7 +111,11 @@ def get_similarity_rankings(me, others, db_manager):
     return sorted(filter(lambda item: item[1] > SIM_CUT_OFF, zip(others,
         others_scores)), key=lambda item: item[1], reverse=True)
 
-def process_info(image, x, y):
+def get_order_history(uid):
+  db = sqlite3.connect('DB/chow.db')
+  c = db.cursor()
+
+  return c.execute("select did,rating from choices where uid=?",(uid,)).fetchall()
 
 if __name__ == '__main__':
     print get_gimage_link("bibimbap")
