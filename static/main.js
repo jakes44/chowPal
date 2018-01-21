@@ -52,6 +52,26 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         // }
     });
 }
+else if(navigator.mediaDevices && navigator.mediaDevices.webkitGetUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.webkitGetUserMedia({ video: true }).then(function(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        video.play();
+        // video.onloadedmetadata = function() {
+            
+        // }
+    });
+}
+else if(navigator.mediaDevices && navigator.mediaDevices.mozGetUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.mozGetUserMedia({ video: true }).then(function(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        video.play();
+        // video.onloadedmetadata = function() {
+            
+        // }
+    });
+}
 
 lightbulb.addEventListener("click", function() {
     lightbulb.src = "/static/fa-lightbulb.gif"

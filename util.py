@@ -50,6 +50,7 @@ def structure_payload(nasty_shit,session, db_manager):
     payload['health_info'] = db_manager.get_health(payload['did'])
     payload['rating'] = db_manager.get_score(payload['did'])
     payload['similarity_liked'] = they_liked(session['similars'], payload['did'], db_manager)
+    payload['pics'] = nasty_shit[0][1]
 
     return payload
 
