@@ -10,8 +10,7 @@ def db_init():
     # Schema stuff 
     c.execute('''CREATE TABLE IF NOT EXISTS user_profile (
                 uid INTEGER,
-                dietary_restriction TEXT,
-                allergies TEXT )
+                dietary_restriction TEXT)
                 ''')
 
     c.execute('''CREATE TABLE IF NOT EXISTS choices (
@@ -19,11 +18,11 @@ def db_init():
                 did INTEGER,
                 cid INTEGER, 
                 point REAL,
-                blurb TEXT, 
                 rating REAL )''')
 
     c.execute('''CREATE TABLE IF NOT EXISTS co_data (
                 did INTEGER,
+                blurb TEXT, 
                 health_info BLOB )''')
 
     db.commit()
