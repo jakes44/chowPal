@@ -145,16 +145,27 @@ def process_info(image, x, y):
         if (y >= t and y <= t+h and x >= l and x <= l+w):
             # draw.rectangle([l, t, l+w, t+h], outline=255)
             image = image.crop((l,t,l+w,t+h))
-            image.show()
+            #image.show()
             enhancer = ImageEnhance.Contrast(image)
             image = enhancer.enhance(1.5)
-            image.show()
-            other, (l,t,w,h) =  get_text_info(image, True)[0]
+            #image.show()
+            other =  get_text_info(image, True)[0][0]
             results.append((other, get_first_n_results(other + " \"recipe\"", 4)))
 
     # image.show()
     
-    return results
+    # Structure this shit
+    '''
+    { did: asdfsdaf,
+      name: result[0][0],
+      text: blurb here,
+      pics: results[0][1],
+      health_info: {},
+      rating: some aggregate score}
+    '''
+    toSend = {did: }
+
+    return results[0]
 
 if __name__ == '__main__':
     print get_gimage_link("bibimbap")
