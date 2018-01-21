@@ -18,8 +18,10 @@ def db_init():
                 uid INTEGER,
                 did INTEGER,
                 cid INTEGER, 
-                point REAL, 
+                point REAL,
+                blurb TEXT, 
                 rating REAL )''')
+
     c.execute('''CREATE TABLE IF NOT EXISTS co_data (
                 did INTEGER,
                 health_info BLOB )''')

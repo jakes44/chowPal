@@ -24,6 +24,9 @@ def ping():
 
     Called when the session loads
 
+    store restaurant info in session session['restaurant']
+    store UID in session
+
     Necessary args in POST request:
         - UID
         - Geo-coordinate
@@ -50,9 +53,9 @@ def process_img():
         x = int(request.form['x'])
         y = int(request.form['y'])
 
-        out_result = process_info(image, x, y)
+        out_result = process_info(image, x, y, session)
 
-    return json.dumps({'status': 'success', 'result': out_result})
+    return json.dumps({'status': 'success', 'result': json.dumps(out_result)})
 
 @app.route("/recommend", methods=['GET', 'POST'])
 def recommend():

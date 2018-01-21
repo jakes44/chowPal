@@ -18,6 +18,12 @@ GOOGLE_IMG_URL="https://www.google.com/search?tbm=isch&q={query}"
 THRESHOLD = 100 # datapoint needed before computing similarity
 SIM_CUT_OFF = 0.2 # minimum similarity index required to be considered ``similar''
 
+def structure_payload(nasty_shit,session):
+
+    payload = {}
+
+    payload['did'] = session['restaurant'].append(nasty)
+
 def to_ascii(string):
     res = ""
     for char in string:
@@ -126,7 +132,11 @@ def get_similarity_rankings(me, others, db_manager):
     return sorted(filter(lambda item: item[1] > SIM_CUT_OFF, zip(others,
         others_scores)), key=lambda item: item[1], reverse=True)
 
-def process_info(image, x, y):
+def they_liked(user_list, did):
+    '''returns if at least a majority of ppl in user_list liked a dish'''
+    return True
+
+def process_info(image, x, y, session):
 
     # image = enhancer.enhance(2)
 
@@ -156,16 +166,16 @@ def process_info(image, x, y):
     
     # Structure this shit
     '''
-    { did: asdfsdaf,
-      name: result[0][0],
-      text: blurb here,
+    { did: asdfsdaf, < hash(restaurant+dish_name) <-- preprocessed, split->join .lower()
+      name: result[0][0], 
+      blurb: blurb here, <- try db_manager.get_blurb(did) except: wiki-find: finally: ask waiter?
       pics: results[0][1],
-      health_info: {},
-      rating: some aggregate score}
+      health_info: {}, <- db_manager.get_health(did)
+      rating: some aggregate score, <- db_manager.get_score(did)
+      similarity_liked: bool <- }
     '''
-    toSend = {did: }
 
-    return results[0]
+    return structure_payload(results, session)
 
 if __name__ == '__main__':
     print get_gimage_link("bibimbap")
