@@ -85,7 +85,7 @@ lightbulb.addEventListener("click", function() {
                 console.log(data);
                 lightbulb.src = "/static/fa-lightbulb.png"
                 openNav();
-                didElm.href = data[0].result[0].did;
+                didElm.href = data.result.did;
             });
         };
     
@@ -172,12 +172,14 @@ function onHold(e) {
                 contentType: false
             }).done(function(data) {
                 console.log(data);
+                console.log(data[0]);
+                data = JSON.parse(data);
                 var blurbTitle = document.getElementById('blurb-title');
                 var blurbText = document.getElementById('blurb-text');
-                blurbTitle.innerHTML = data[0].result[0].name;
-                blurbText.innerHTML = data[0].result[0].blurb;
+                blurbTitle.innerHTML = data['result']['name'];
+                blurbText.innerHTML = data['result']['blurb'];
                 openNav();
-                didElm.href = data[0].result[0].did;
+                didElm.href = data.result.did;
             });
         };
 

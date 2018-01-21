@@ -68,7 +68,7 @@ def process_img():
 
         out_result = process_info(image, x, y, session, dbManager)
 
-    return json.dumps({'status': 'success', 'result': json.dumps(out_result)})
+    return json.dumps({'status': 'success', 'result': out_result})
 
 @app.route("/recommend", methods=['GET', 'POST'])
 def recommend():
