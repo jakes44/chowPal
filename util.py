@@ -18,11 +18,28 @@ GOOGLE_IMG_URL="https://www.google.com/search?tbm=isch&q={query}"
 THRESHOLD = 100 # datapoint needed before computing similarity
 SIM_CUT_OFF = 0.2 # minimum similarity index required to be considered ``similar''
 
+'''
+structure and sanitize payload, it got dirty along the way
+'''
 def structure_payload(nasty_shit,session):
 
     payload = {}
 
-    payload['did'] = session['restaurant'].append(nasty)
+    payload['did'] = session['restaurant']+"+"+nasty_shit[0][0].split().join("").lower()
+    payload['name'] = nasty_shit[0][0]
+    payload['blurb'] = db_manager.get_blurb(payload['did'])
+
+    if not payload['blurb']:
+        payload['blurb'] = wiki_find(payload['name'])
+
+    if not payload['blurb']:
+        payload['blurb'] = "Ask your waiter/waitress!"
+
+    payload['health_info'] = db_manager.get_health(payload['did'])
+    payload['rating'] = db_manager.get_score(payload['did'])
+    payload['similarity_liked'] = they_liked(get_similarity_rankings(session['uid'], db_manager))
+
+    return payload
 
 def to_ascii(string):
     res = ""
