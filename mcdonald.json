@@ -1,0 +1,304 @@
+{
+	"restaurant": "McDonald's",
+	"dishes" : [
+		{
+	    	"name": "Small Fries", 
+	    	"blurb": "Until 1967, McFries were never frozen, but were cut on-site from potatoes and immediately fried.", 
+	    	"health_info": 
+			{
+				"Calories":"230 Calories",
+				"Total Fat":"11g",
+				"Total Carbs":"29g",
+				"Protein":"3g",
+				"Calories From Fat":"100 Calories",
+				"Saturated Fat":"1.5g",
+				"Trans Fat":"0g",
+				"Cholesterol":"0mg",
+				"Sodium":"160mg",
+				"Dietary Fiber":"3g",
+				"Sugar":"0g",
+				"Vitamin A":"0IU",
+				"Vitamin C":"8mg",
+				"Calcium":"10mg",
+				"Iron":"0.5mg",
+				"Contains":"Wheat, Milk"
+			}
+	    },
+		{
+	    	"name": "McDouble", 
+	    	"blurb": "similar to a Double Cheeseburger, but with just one slice of cheese.", 
+	    	"health_info": 
+			{
+				"Calories":"380 Calories",
+				"Total Fat":"18g",
+				"Total Carbs":"34g",
+				"Protein":"23g",
+				"Calories From Fat":"160 Calories",
+				"Saturated Fat":"8g",
+				"Trans Fat":"1g",
+				"Cholesterol":"70mg",
+				"Sodium":"840mg",
+				"Dietary Fiber":"2g",
+				"Sugar":"7g",
+				"Vitamin A":"540IU",
+				"Vitamin C":"2mg",
+				"Calcium":"110mg",
+				"Iron":"3.5mg",
+				"Contains":"Wheat, Milk, Soy"
+			}
+	    },
+		{
+	    	"name": "Classic Chicken Sandwhich", 
+	    	"blurb": "Classic was a rebranding of the Crispy Chicken and Chicken McGrill sandwiches, themselves rebrandings of the Deluxe chicken line in 1998, with mayonnaise, leaf lettuce, and a tomato slice.", 
+	    	"health_info": 
+			{
+				"Calories":"510 Calories",
+				"Total Fat":"23g",
+				"Total Carbs":"50g",
+				"Protein":"25g",
+				"Calories From Fat":"210 Calories",
+				"Saturated Fat":"4g",
+				"Trans Fat":"0g",
+				"Cholesterol":"65mg",
+				"Sodium":"1040mg",
+				"Dietary Fiber":"3g",
+				"Sugar":"6g",
+				"Vitamin A":"45IU",
+				"Vitamin C":"2mg",
+				"Calcium":"45mg",
+				"Iron":"2.5mg",
+				"Contains":"Wheat, Milk, Egg"
+			}
+	    },
+		{
+	    	"name": "Big Mac", 
+	    	"blurb": "a signature product that was introduced in 1967. Two 1.6-ounce (45 g) (approx. uncooked weight) beef patties, special Big Mac sauce, lettuce, cheese, pickles, and diced onions in a sesame seed bun, with an additional middle bun (called a \"club layer\") separating the beef patties.", 
+	    	"health_info": 
+			{
+				"Calories":"380 Calories",
+				"Total Fat":"18g",
+				"Total Carbs":"34g",
+				"Protein":"23g",
+				"Calories From Fat":"160 Calories",
+				"Saturated Fat":"8g",
+				"Trans Fat":"1g",
+				"Cholesterol":"70mg",
+				"Sodium":"840mg",
+				"Dietary Fiber":"2g",
+				"Sugar":"7g",
+				"Vitamin A":"540IU",
+				"Vitamin C":"2mg",
+				"Calcium":"110mg",
+				"Iron":"3.5mg",
+				"Contains":"Wheat, Milk, Soy"
+			}
+	    },
+		{
+	    	"name": "Cheeseburger", 
+	    	"blurb": "a 1.6-ounce (45 g) ground beef patty, with 0.125 ounces (3.5 g) ketchup, mustard, a single dill pickle and re-hydrated onions on a toasted bun.", 
+	    	"health_info": 
+			{
+				"Calories":"300 Calories",
+				"Total Fat":"12g",
+				"Total Carbs":"33g",
+				"Protein":"15g",
+				"Calories From Fat":"100 Calories",
+				"Saturated Fat":"5g",
+				"Trans Fat":"0.5g",
+				"Cholesterol":"40mg",
+				"Sodium":"680mg",
+				"Dietary Fiber":"2g",
+				"Sugar":"7g",
+				"Vitamin A":"530IU",
+				"Vitamin C":"1mg",
+				"Calcium":"100mg",
+				"Iron":"2.5mg",
+				"Contains":"Enriched Flour (Wheat Flour, Malted Barley Flour, Niacin, Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Water, Sugar, Yeast, Soybean Oil, Contains 2% or Less: Salt, Wheat Gluten, Potato Flour, May Contain One or More Dough Conditioners (DATEM, Ascorbic Acid, Mono and Diglycerides, Enzymes), Calcium Propionate (Preservative), 100% Pure USDA Inspected Beef; No Fillers, No Extenders, Milk, Cream, Water, Sodium Citrate, Cheese Cultures, Salt, Color Added, Sorbic Acid (Preservative), Citric Acid, Lactic Acid, Acetic Acid, Enzymes, Soy Lecithin, Tomato Concentrate from Red Ripe Tomatoes, Distilled Vinegar, High Fructose Corn Syrup, Corn Syrup, Water, Salt, Natural Flavors, Cucumbers, Water, Distilled Vinegar, Salt, Calcium Chloride, Alum, Potassium Sorbate (Preservative), Natural Flavors, Polysorbate 80, Extractives of Turmeric (Color), Onions, Distilled Vinegar, Water, Mustard Seed, Salt, Turmeric, Paprika, Spice Extractive"
+			}
+	    },
+		{
+	    	"name": "Quarter Pounder", 
+	    	"blurb": "a 4.25-ounce (120.5 g) (originally 4-ounce (113.4 g) until 2015) (approx. uncooked weight) ground beef patty with ketchup, mustard, chopped onions, pickle, and two slices of cheese.", 
+	    	"health_info": 
+			{
+				"Calories":"530 Calories",
+				"Total Fat":"27g",
+				"Total Carbs":"41g",
+				"Protein":"31g",
+				"Calories From Fat":"240 Calories",
+				"Saturated Fat":"13g",
+				"Trans Fat":"1.5g",
+				"Cholesterol":"100mg",
+				"Sodium":"1090mg",
+				"Dietary Fiber":"3g",
+				"Sugar":"10g",
+				"Vitamin A":"1060IU",
+				"Vitamin C":"3mg",
+				"Calcium":"170mg",
+				"Iron":"4.5mg",
+				"Contains":"100% Pure USDA Inspected Beef; No Fillers, No Extenders, Enriched Flour (Wheat Flour, Malted Barley Flour, Niacin, Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Water, Sugar, Yeast, Soybean Oil, Contains 2% or Less: Salt, Wheat Gluten, Sesame Seeds, Potato Flour, May Contain One or More Dough Conditioners (DATEM, Ascorbic Acid, Mono and Diglycerides, Enzymes), Calcium Propionate (Preservative), Milk, Cream, Water, Sodium Citrate, Cheese Cultures, Salt, Color Added, Sorbic Acid (Preservative), Citric Acid, Lactic Acid, Acetic Acid, Enzymes, Soy Lecithin, Tomato Concentrate from Red Ripe Tomatoes, Distilled Vinegar, High Fructose Corn Syrup, Corn Syrup, Water, Salt, Natural Flavors, Cucumbers, Water, Distilled Vinegar, Salt, Calcium Chloride, Alum, Potassium Sorbate (Preservative), Natural Flavors, Polysorbate 80, Extractives of Turmeric (Color), Onions, Distilled Vinegar, Water, Mustard Seed, Salt, Turmeric, Paprika, Spice Extractive"
+			}
+	    },
+		{
+	    	"name": "Double Quarter Pounder", 
+	    	"blurb": "two .25-ounce (120.5 g) (originally 4-ounce (113.4 g) until 2015) (approx. uncooked weight) ground beef patties with ketchup, mustard, chopped onions, pickle, and two slices of cheese.", 
+	    	"health_info": 
+			{
+				"Calories":"770 Calories",
+				"Total Fat":"45g",
+				"Total Carbs":"42g",
+				"Protein":"51g",
+				"Calories From Fat":"400 Calories",
+				"Saturated Fat":"21g",
+				"Trans Fat":"2.5g",
+				"Cholesterol":"175mg",
+				"Sodium":"1290mg",
+				"Dietary Fiber":"3g",
+				"Sugar":"10g",
+				"Vitamin A":"1090IU",
+				"Vitamin C":"4mg",
+				"Calcium":"180mg",
+				"Iron":"6.5mg",
+				"Contains":"100% Pure USDA Inspected Beef; No Fillers, No Extenders, Enriched Flour (Wheat Flour, Malted Barley Flour, Niacin, Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Water, Sugar, Yeast, Soybean Oil, Contains 2% or Less: Salt, Wheat Gluten, Sesame Seeds, Potato Flour, May Contain One or More Dough Conditioners (DATEM, Ascorbic Acid, Mono and Diglycerides, Enzymes), Calcium Propionate (Preservative), Milk, Cream, Water, Sodium Citrate, Cheese Cultures, Salt, Color Added, Sorbic Acid (Preservative), Citric Acid, Lactic Acid, Acetic Acid, Enzymes, Soy Lecithin, Tomato Concentrate from Red Ripe Tomatoes, Distilled Vinegar, High Fructose Corn Syrup, Corn Syrup, Water, Salt, Natural Flavors, Cucumbers, Water, Distilled Vinegar, Salt, Calcium Chloride, Alum, Potassium Sorbate (Preservative), Natural Flavors, Polysorbate 80, Extractives of Turmeric (Color), Onions, Distilled Vinegar, Water, Mustard Seed, Salt, Turmeric, Paprika, Spice Extractive"
+	    	}
+	    },
+		{
+	    	"name": "Double Cheeseburger", 
+	    	"blurb": "two 1.6-ounce (45 g) ground beef patties, with 0.125 ounces (3.5 g) ketchup, mustard (except in all or much of the New York City area), two slices of dill pickle, re-hydrated onions, and two pieces of cheese on a toasted bun. The double cheeseburger was offered as a promotional item in the 1950s and was added to the regular menu in 1965.", 
+	    	"health_info": 
+			{
+				"Calories":"430 Calories",
+				"Total Fat":"21g",
+				"Total Carbs":"35g",
+				"Protein":"25g",
+				"Calories From Fat":"190 Calories",
+				"Saturated Fat":"11g",
+				"Trans Fat":"1g",
+				"Cholesterol":"85mg",
+				"Sodium":"1040mg",
+				"Dietary Fiber":"2g",
+				"Sugar":"7g",
+				"Vitamin A":"990IU",
+				"Vitamin C":"2mg",
+				"Calcium":"170mg",
+				"Iron":"3.5mg",
+				"Contains":"Enriched Flour (Wheat Flour, Malted Barley Flour, Niacin, Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Water, Sugar, Yeast, Soybean Oil, Contains 2% or Less: Salt, Wheat Gluten, Potato Flour, May Contain One or More Dough Conditioners (DATEM, Ascorbic Acid, Mono and Diglycerides, Enzymes), Calcium Propionate (Preservative), 100% Pure USDA Inspected Beef; No Fillers, No Extenders, Milk, Cream, Water, Sodium Citrate, Cheese Cultures, Salt, Color Added, Sorbic Acid (Preservative), Citric Acid, Lactic Acid, Acetic Acid, Enzymes, Soy Lecithin, Tomato Concentrate from Red Ripe Tomatoes, Distilled Vinegar, High Fructose Corn Syrup, Corn Syrup, Water, Salt, Natural Flavors, Cucumbers, Water, Distilled Vinegar, Salt, Calcium Chloride, Alum, Potassium Sorbate (Preservative), Natural Flavors, Polysorbate 80, Extractives of Turmeric (Color), Onions, Distilled Vinegar, Water, Mustard Seed, Salt, Turmeric, Paprika, Spice Extractive"
+			}
+	    },
+		{
+	    	"name": "Buttermilk Crispy Chicken Sandwich", 
+	    	"blurb": "a sandwich made with a crispy chicken breast, tomato slices, and lettuce.", 
+	    	"health_info": 
+			{
+				"Calories":"570 Calories",
+				"Total Fat":"23g",
+				"Total Carbs":"64g",
+				"Protein":"28g",
+				"Calories From Fat":"200 Calories",
+				"Saturated Fat":"5g",
+				"Trans Fat":"0g",
+				"Cholesterol":"60mg",
+				"Sodium":"1050mg",
+				"Dietary Fiber":"4g",
+				"Sugar":"11g",
+				"Vitamin A":"200IU",
+				"Vitamin C":"7mg",
+				"Calcium":"190mg",
+				"Iron":"2.5mg",
+				"Contains":"Chicken Breast Fillets with Rib Meat, Water, Vegetable Oil (Canola Oil, Corn Oil, Soybean Oil, Hydrogenated Soybean Oil), Wheat Flour, Bread Crumbs (Wheat Flour, Vinegar, Sea Salt, Baking Soda, Inactive Yeast, Natural Flavor), Potato Starch, Buttermilk (Cultured Nonfat Milk, Salt, Sodium Citrate, Vitamin A Palmitate, Vitamin D3), Salt, Citric Acid, Rice Starch, Palm Oil, Corn Starch, Rice Flour, Yellow Corn Flour, Natural Flavors, Spices, Baking Soda, Sugar, Garlic Powder, Xanthan Gum, Maltodextrin, Wheat Flour or Enriched Flour (Wheat Flour or Bleached Wheat Flour, Niacin, Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Malted Barley Flour, Water, Sugar, Yeast, Palm Oil, Wheat Gluten, Dextrose, Salt, Contains 2% or Less: Natural Flavors, Corn Flour, Soybean Oil, Calcium Sulfate, Mono- and Diglycerides, Sodium Stearoyl Lactylate, Monocalcium Phosphate, Ascorbic Acid, Calcium Peroxide, Enzymes, Calcium Propionate (Preservative), Vegetable Proteins (Pea, Potato, Rice), Sunflower Oil, Turmeric, Paprika, Corn Starch, Wheat Starch, Acetic Acid, Tomato, Water, Soybean Oil, Maltodextrin, Modified Food Starch, Enzyme Modified Egg Yolk, Distilled Vinegar, Salt, Sugar, Spices, Xanthan Gum, Potassium Sorbate (Preservative), Lemon Juice Concentrate, Polysorbate 80, Natural Flavor, Calcium Disodium EDTA to protect flavor, Lettuce"
+			}
+	    },
+		{
+	    	"name": "Artisan Grilled Chicken", 
+	    	"blurb": "in the first week of April 2015, McDonald's introduced a redesigned grilled chicken patty, replacing the Premium Grilled Chicken sandwich, which contains \"fewer ingredients\", and those that remain can be found in consumer's \"own kitchens\".", 
+	    	"health_info": 
+			{
+				"Calories":"380 Calories",
+				"Total Fat":"7g",
+				"Total Carbs":"44g",
+				"Protein":"37g",
+				"Calories From Fat":"60 Calories",
+				"Saturated Fat":"2g",
+				"Trans Fat":"0g",
+				"Cholesterol":"95mg",
+				"Sodium":"1110mg",
+				"Dietary Fiber":"3g",
+				"Sugar":"11g",
+				"Vitamin A":"210IU",
+				"Vitamin C":"11mg",
+				"Calcium":"190mg",
+				"Iron":"2.5mg",
+				"Contains":"Boneless Skinless Chicken Breast with Rib Meat, Water, Salt, Sugar, Garlic Powder, Lemon Juice Concentrate, Honey, Onion Powder, Natural Flavor, Dried Vinegar, Rice Starch. Grilled with Clarified Butter (Pasteurized Milk [Butterfat]), Wheat Flour or Enriched Flour (Wheat Flour or Bleached Wheat Flour, Niacin, Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Malted Barley Flour, Water, Sugar, Yeast, Palm Oil, Wheat Gluten, Dextrose, Salt, Contains 2% or Less: Natural Flavors, Corn Flour, Soybean Oil, Calcium Sulfate, Mono- and Diglycerides, Sodium Stearoyl Lactylate, Monocalcium Phosphate, Ascorbic Acid, Calcium Peroxide, Enzymes, Calcium Propionate (Preservative), Vegetable Proteins (Pea, Potato, Rice), Sunflower Oil, Turmeric, Paprika, Corn Starch, Wheat Starch, Acetic Acid, Tomato, Lettuce, Soybean Oil, Apple Cider Vinegar, Water, Sugar, Garlic, Salt, Dried Garlic, Yeast Extract, Natural Flavors, Spices, Potato Protein, Dried Onion, Lemon Juice Concentrate, Dried Honey, Citric Acid, Tamarind, Dried Vinegar, Xanthan Gum, Salt, Pepper"
+			}
+	    },
+		{
+	    	"name": "Filet-O-Fish", 
+	    	"blurb": "a fish fillet with tartar sauce and a half slice of cheese, on a steamed bun.", 
+	    	"health_info": 
+			{
+				"Calories":"410 Calories",
+				"Total Fat":"20g",
+				"Total Carbs":"39g",
+				"Protein":"18g",
+				"Calories From Fat":"180 Calories",
+				"Saturated Fat":"5g",
+				"Trans Fat":"0g",
+				"Cholesterol":"50mg",
+				"Sodium":"660mg",
+				"Dietary Fiber":"2g",
+				"Sugar":"5g",
+				"Vitamin A":"450IU",
+				"Vitamin C":"1mg",
+				"Calcium":"100mg",
+				"Iron":"2mg",
+				"Contains":"White Boneless Chicken, Water, Vegetable Oil (Canola Oil, Corn Oil, Soybean Oil, Hydrogenated Soybean Oil), Enriched Flour (Bleached Wheat Flour, Niacin, Reduced Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Bleached Wheat Flour, Yellow Corn Flour, Vegetable Starch (Modified Corn, Wheat, Rice, Pea, Corn), Salt, Leavening (Baking Soda, Sodium Aluminum Phosphate, Sodium Acid Pyrophosphate, Calcium Lactate, Monocalcium Phosphate), Spices, Yeast Extract, Lemon Juice Solids, Dextrose, Natural Flavors"
+			}
+	    },
+		{
+	    	"name": "Chicken McNuggets", 
+	    	"blurb": "introduced in 1983 as a replacement for the McChicken, these are small chicken chunks served with dipping sauces of barbecue, sweet n' sour, honey, and hot mustard. Available in 4, 6, 10 (originally 9), or 20 pieces. Up until 2003, they were a combination of white and dark meat, now they are made with only white meat.", 
+	    	"health_info": 
+			{
+				"Calories":"440 Calories",
+				"Total Fat":"27g",
+				"Total Carbs":"26g",
+				"Protein":"24g",
+				"Calories From Fat":"240 Calories",
+				"Saturated Fat":"4.5g",
+				"Trans Fat":"0g",
+				"Cholesterol":"75mg",
+				"Sodium":"840mg",
+				"Dietary Fiber":"2g",
+				"Sugar":"0g",
+				"Vitamin A":"0IU",
+				"Vitamin C":"2mg",
+				"Calcium":"15mg",
+				"Iron":"1mg",
+				"Contains":"White Boneless Chicken, Water, Vegetable Oil (Canola Oil, Corn Oil, Soybean Oil, Hydrogenated Soybean Oil), Enriched Flour (Bleached Wheat Flour, Niacin, Reduced Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Bleached Wheat Flour, Yellow Corn Flour, Vegetable Starch (Modified Corn, Wheat, Rice, Pea, Corn), Salt, Leavening (Baking Soda, Sodium Aluminum Phosphate, Sodium Acid Pyrophosphate, Calcium Lactate, Monocalcium Phosphate), Spices, Yeast Extract, Lemon Juice Solids, Dextrose, Natural Flavors"
+			}
+	    },
+		{
+	    	"name": "McChicken", 
+	    	"blurb": "a mildly spicy chicken sandwich, offered in a spicier variant as the Hot n' Spicy in some markets. Made from 100% ground white meat chicken, mayonnaise, and shredded lettuce, on a toasted bun.", 
+	    	"health_info": 
+			{
+				"Calories":"350 Calories",
+				"Total Fat":"15g",
+				"Total Carbs":"40g",
+				"Protein":"15g",
+				"Calories From Fat":"130 Calories",
+				"Saturated Fat":"3.5g",
+				"Trans Fat":"0g",
+				"Cholesterol":"40mg",
+				"Sodium":"600mg",
+				"Dietary Fiber":"2g",
+				"Sugar":"5g",
+				"Vitamin A":"80IU",
+				"Vitamin C":"1mg",
+				"Calcium":"35mg",
+				"Iron":"2.5mg",
+				"Contains":"White Boneless Chicken, Water, Vegetable Oil (Canola Oil, Corn Oil, Soybean Oil, Hydrogenated Soybean Oil), Enriched Flour (Bleached Wheat Flour, Niacin, Reduced Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Bleached Wheat Flour, Yellow Corn Flour, Vegetable Starch (Modified Corn, Wheat, Rice, Pea, Corn), Salt, Leavening (Baking Soda, Sodium Aluminum Phosphate, Sodium Acid Pyrophosphate, Calcium Lactate, Monocalcium Phosphate), Spices, Yeast Extract, Lemon Juice Solids, Dextrose, Natural Flavors"
+			}
+	    }
+	]
+}

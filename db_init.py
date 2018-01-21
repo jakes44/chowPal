@@ -23,7 +23,7 @@ def db_init():
     c.execute('''CREATE TABLE IF NOT EXISTS co_data (
                 did INTEGER,
                 blurb TEXT, 
-                health_info BLOB )''')
+                health_info TEXT )''')
 
     db.commit()
     db.close()

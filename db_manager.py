@@ -1,5 +1,8 @@
 import sqlite3
 import uuid
+import json
+
+from util import generate_did
 
 class DBManager(object):
     def __init__(self, path):
@@ -17,7 +20,7 @@ class DBManager(object):
         res = self._c.execute(query, (did,)).fetchall()
 
         if len(res):
-            return res
+            return res[0][0]
         else:
             return None
 
@@ -27,7 +30,7 @@ class DBManager(object):
         res = self._c.execute(query, (did,)).fetchall()
 
         if len(res):
-            return res
+            return map(lambda objstr: json.loads(objstr[0]), res)
         else:
             return {}
 
@@ -50,6 +53,11 @@ class DBManager(object):
 
         res = self._c.execute(query).fetchall()
 
+        return map(lambda a: a[0], res)
+
+    def get_all_dishes(self):
+        query = 'SELECT did FROM co_data'
+        res = self._c.execute(query).fetchall()
         return map(lambda a: a[0], res)
 
     def create_user_profile(self, dietary_restriction):
@@ -76,10 +84,10 @@ class DBManager(object):
     def add_user_rating(self, cid, rating):
         query = 'SELECT * FROM choices WHERE cid = ?'
 
-        res = self._c.execute(query, (cid)).fetchall()
+        res = self._c.execute(query, (cid,)).fetchall()
 
         if len(res):
-            query = 'INSERT INTO choices (rating) VALUES (?) WHERE cid = ?'
+            query = 'UPDATE choices SET rating = ? WHERE cid = ?'
             self._c.execute(query, (rating, cid))
             self._db.commit()
 
@@ -97,7 +105,7 @@ class DBManager(object):
 
             query = "INSERT INTO co_data VALUES (?, ?, ?)"
 
-            self._c.execute(query, (did, blurb, health_info))
+            self._c.execute(query, (did, blurb, json.dumps(health_info)))
             self._db.commit()
 
     def close(self):
