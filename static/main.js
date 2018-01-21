@@ -16,7 +16,7 @@ function closeNav() {
     fd.append('like', 0);
     $.ajax({
         type: 'POST',
-        url: '/process_menu',
+        url: '/yes_no_feedback',
         data: fd,
         processData: false,
         contentType: false
@@ -32,7 +32,7 @@ function acceptFood() {
     fd.append('like', 1);
     $.ajax({
         type: 'POST',
-        url: '/process_menu',
+        url: '/yes_no_feedback',
         data: fd,
         processData: false,
         contentType: false
@@ -85,7 +85,7 @@ lightbulb.addEventListener("click", function() {
                 console.log(data);
                 lightbulb.src = "/static/fa-lightbulb.png"
                 openNav();
-                didElm.href = data.did;
+                didElm.href = data[0].did;
             });
         };
     
@@ -172,8 +172,12 @@ function onHold(e) {
                 contentType: false
             }).done(function(data) {
                 console.log(data);
+                var blurbTitle = document.getElementById('blurb-title');
+                var blurbText = document.getElementById('blurb-text');
+                blurbTitle.innerHTML = data[0].name;
+                blurbText.innerHTML = data[0].blurb;
                 openNav();
-                didElm.href = data.did;
+                didElm.href = data[0].did;
             });
         };
 
