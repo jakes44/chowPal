@@ -7,11 +7,14 @@ from PIL import Image, ImageDraw
 LINE_LV = '4'
 WORD_LV = '5'
 
-def get_text_info(img):
+def get_text_info(img, post=False):
     filename = "".join([random.choice(ascii_letters) for _ in range(10)]) + ".png"
     out_loc = os.path.join(".", filename)
     img.save(out_loc)
-    command = "tesseract %s -psm 1 %s tsv" % (out_loc, out_loc)
+    if post:
+        command = "tesseract %s --psm 1 %s tsv" % (out_loc, out_loc)
+    else:
+        command = "tesseract %s --psm 7 %s tsv" % (out_loc, out_loc)
     print(command)
     os.system(command)
 

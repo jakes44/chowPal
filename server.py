@@ -47,8 +47,8 @@ def process_img():
         img = request.form['image']
         image_data = re.sub('^data:image/.+;base64,', '', img).decode('base64')
         image = Image.open(cStringIO.StringIO(image_data))
-        x = request.form['x']
-        y = request.form['y']
+        x = int(request.form['x'])
+        y = int(request.form['y'])
 
         out_result = process_info(image, x, y)
 

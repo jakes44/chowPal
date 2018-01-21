@@ -7,4 +7,4 @@ def get_order_history(uid):
   return c.execute("select did,rating from choices where uid=?",(uid,)).fetchall()
 
 if __name__ == '__main__':
-    
+    pass
