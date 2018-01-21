@@ -189,8 +189,11 @@ function onHold(e) {
                 console.log(data[0]);
                 data = JSON.parse(data);
                 var blurbTitle = document.getElementById('blurb-title');
+                var blurbRating = document.getElementById('blurb-rating');
                 var blurbText = document.getElementById('blurb-text');
+                var blurbImg = document.getElementById('blurb-img');
                 blurbTitle.innerHTML = data['result']['name'];
+                blurbRating.innerHTML = data['result']['rating'];
                 blurbText.innerHTML = data['result']['blurb'];
 
                 var picContainer = document.getElementById('pic-container');
@@ -215,13 +218,13 @@ function init() {
     fd.append('restaurant', 'sangkee');
     fd.append('uid', 11223344);
     $.ajax({
-                    type: 'POST',
-                    url: '/init',
-                    data: fd,
-                    processData: false,
-                    contentType: false
-                }).done(function(data) {
-                    console.log(data);
+        type: 'POST',
+        url: '/init',
+        data: fd,
+        processData: false,
+        contentType: false
+    }).done(function(data) {
+        console.log(data);
     });
 
     console.log("HELLO");
