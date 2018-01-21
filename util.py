@@ -4,7 +4,6 @@ Various utility functions used in flask server
 import requests
 import time
 import os
-import db_manager
 
 import PIL
 from PIL import Image
@@ -108,19 +107,20 @@ def compute_similarity(hist1, hist2):
 
     return sim_score
 
-def get_similarity_rankings(me, others, db_manager):
+def get_similarity_rankings(me, db_manager):
     """
     get_similarity_rankings: ranks the others in order of similarity to me
 
     Args:
         me (string): uid of user in question
-	others (list of string): list of uid they 
         db_manager: database manager
     
     Returns:
         the list of others in order of similarity to me, from most similar to
         least similar
     """
+    others = db_manager.get_all_uid()
+    others.remove(me)
     my_hist = aggregate_orders(db_manager.get_order_history(me))
     others_list = map(lambda uid:
             aggregate_orders(db_manager.get_order_history(uid)),
@@ -132,9 +132,19 @@ def get_similarity_rankings(me, others, db_manager):
     return sorted(filter(lambda item: item[1] > SIM_CUT_OFF, zip(others,
         others_scores)), key=lambda item: item[1], reverse=True)
 
-def they_liked(user_list, did):
+def they_liked(user_list, did, db_manager):
     '''returns if at least a majority of ppl in user_list liked a dish'''
-    return True
+    personal_scores = map(lambda u: db_manager.get_personal_score(u[0], did))
+
+    liked = 0
+    total = 0
+
+    for score in personal_scores:
+        total += 1
+        if score > 0:
+            liked += 1
+
+    return (2 * liked > total)
 
 def process_info(image, x, y, session):
 

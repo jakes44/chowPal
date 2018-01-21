@@ -7,7 +7,11 @@ import json
 import re
 import cStringIO
 
+from db_manager import DBManager
+
 from PIL import Image
+
+dbManager = DBManager("DB/chow.db")
 
 from util import *
 
@@ -31,7 +35,15 @@ def ping():
         - UID
         - Geo-coordinate
     '''
-    pass
+    uid = request.form['uid']
+    restaurant = request.form['restaurant']
+    similares = get_similarity_rankings(uid, dbManager)
+
+    session['uid'] = uid
+    session['restaurant'] = restaurant
+    session['similars'] = similares
+
+    return ""
 
 @app.route("/process_menu", methods=['GET', 'POST'])
 def process_img():
