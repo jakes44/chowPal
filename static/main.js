@@ -134,3 +134,22 @@ function onHold(e) {
         //xhr.send(JSON.stringify(fd));
     }, 'image/jpeg');
 }
+
+function init() {
+    var fd = new FormData();
+    fd.append('restaurant', 'sangkee');
+    fd.append('uid', 11223344);
+    $.ajax({
+                    type: 'POST',
+                    url: '/init',
+                    data: fd,
+                    processData: false,
+                    contentType: false
+                }).done(function(data) {
+                    console.log(data);
+    });
+
+    console.log("HELLO");
+};
+
+init();

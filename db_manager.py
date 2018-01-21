@@ -3,7 +3,7 @@ import uuid
 
 class DBManager(object):
     def __init__(self, path):
-        self._db = sqlite3.connect(path)
+        self._db = sqlite3.connect(path, check_same_thread=False)
         self._c = self._db.cursor()
 
     def get_order_history(self, uid):
@@ -62,7 +62,8 @@ class DBManager(object):
 
         return uid
 
-    def add_user_choice()
+    def add_user_choice():
+        pass
 
     def close(self):
         self._db.close()

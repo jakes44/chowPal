@@ -20,23 +20,36 @@ SIM_CUT_OFF = 0.2 # minimum similarity index required to be considered ``similar
 '''
 structure and sanitize payload, it got dirty along the way
 '''
-def structure_payload(nasty_shit,session):
+
+def generate_did(restaurant, dish_name):
+    # rest = (restaurant.split()).join("")
+    rest = "".join(restaurant.split()).lower()
+    dish = "".join(dish_name.split()).lower()
+
+
+    # rest = str(restaurant.split()).lower()
+    # dish = str(dish_name.split()).join("").lower()
+
+    print rest+"+"+dish
+    return rest+"+"+dish
+
+def structure_payload(nasty_shit,session, db_manager):
 
     payload = {}
 
-    payload['did'] = session['restaurant']+"+"+nasty_shit[0][0].split().join("").lower()
+    payload['did'] = generate_did(session['restaurant'], nasty_shit[0][0])
     payload['name'] = nasty_shit[0][0]
     payload['blurb'] = db_manager.get_blurb(payload['did'])
 
     if not payload['blurb']:
-        payload['blurb'] = wiki_find(payload['name'])
+        payload['blurb'] = "TODO"#wiki_find(payload['name'])
 
     if not payload['blurb']:
         payload['blurb'] = "Ask your waiter/waitress!"
 
     payload['health_info'] = db_manager.get_health(payload['did'])
     payload['rating'] = db_manager.get_score(payload['did'])
-    payload['similarity_liked'] = they_liked(get_similarity_rankings(session['uid'], db_manager))
+    payload['similarity_liked'] = they_liked(session['similars'], payload['did'], db_manager)
 
     return payload
 
@@ -137,7 +150,7 @@ def get_similarity_rankings(me, db_manager):
         least similar
     """
     others = db_manager.get_all_uid()
-    others.remove(me)
+    # others.remove(me)
     my_hist = aggregate_orders(db_manager.get_order_history(me))
     others_list = map(lambda uid:
             aggregate_orders(db_manager.get_order_history(uid)),
@@ -151,7 +164,7 @@ def get_similarity_rankings(me, db_manager):
 
 def they_liked(user_list, did, db_manager):
     '''returns if at least a majority of ppl in user_list liked a dish'''
-    personal_scores = map(lambda u: db_manager.get_personal_score(u[0], did))
+    personal_scores = map(lambda u: db_manager.get_personal_score(u[0], did), user_list)
 
     liked = 0
     total = 0
@@ -163,7 +176,7 @@ def they_liked(user_list, did, db_manager):
 
     return (2 * liked > total)
 
-def process_info(image, x, y, session):
+def process_info(image, x, y, session, db_manager):
 
     # image = enhancer.enhance(2)
 
@@ -202,7 +215,7 @@ def process_info(image, x, y, session):
       similarity_liked: bool <- }
     '''
 
-    return structure_payload(results, session)
+    return structure_payload(results, session, db_manager)
 
 if __name__ == '__main__':
     print get_gimage_link("bibimbap")

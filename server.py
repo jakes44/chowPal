@@ -35,6 +35,7 @@ def ping():
         - UID
         - Geo-coordinate
     '''
+    print request.form
     uid = request.form['uid']
     restaurant = request.form['restaurant']
     similares = get_similarity_rankings(uid, dbManager)
@@ -65,7 +66,7 @@ def process_img():
         x = int(request.form['x'])
         y = int(request.form['y'])
 
-        out_result = process_info(image, x, y, session)
+        out_result = process_info(image, x, y, session, dbManager)
 
     return json.dumps({'status': 'success', 'result': json.dumps(out_result)})
 
@@ -107,4 +108,7 @@ def review():
     pass
 
 if __name__ == "__main__":
+    app.secret_key = 'super secret key'
+    app.config['SESSION_TYPE'] = 'filesystem'
     app.run(host = "0.0.0.0", port = 8000, debug = True)
+
