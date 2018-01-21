@@ -21,10 +21,18 @@ SIM_CUT_OFF = 0.2 # minimum similarity index required to be considered ``similar
 structure and sanitize payload, it got dirty along the way
 '''
 
+def to_ascii(string):
+    res = ""
+    for char in string:
+        if ord(char) < 0 or ord(char) >= 128:
+            continue
+        res += char
+    return res
+
 def generate_did(restaurant, dish_name):
     # rest = (restaurant.split()).join("")
-    rest = "".join(restaurant.split()).lower()
-    dish = "".join(dish_name.split()).lower()
+    rest = to_ascii("".join(restaurant.split()).lower())
+    dish = to_ascii("".join(dish_name.split()).lower())
 
 
     # rest = str(restaurant.split()).lower()
@@ -50,19 +58,13 @@ def structure_payload(nasty_shit,session, db_manager):
     payload['health_info'] = db_manager.get_health(payload['did'])
     payload['rating'] = db_manager.get_score(payload['did'])
     payload['similarity_liked'] = they_liked(session['similars'], payload['did'], db_manager)
-    payload['pics'] = nasty_shit[0][1]
+    payload['pics'] = nasty_shit[0][1][0]
 
     return payload
 
-def to_ascii(string):
-    res = ""
-    for char in string:
-        if ord(char) < 0 or ord(char) >= 128:
-            continue
-        res += char
-    return res
 
 def get_next_item(page):
+    page = to_ascii(page)
     start = page.find('rg_di')
 
     if start == -1:
@@ -215,6 +217,22 @@ def process_info(image, x, y, session, db_manager):
       rating: some aggregate score, <- db_manager.get_score(did)
       similarity_liked: bool <- }
     '''
+
+    return structure_payload(results, session, db_manager)
+
+def recommend_backend(image, session, db_manager):
+    output = get_text_info(image)
+
+    results = []
+    (sent, (l, t, w, h)) = random.choice(output)
+
+    image = image.crop((l, t, l+w, t+h))
+    image.show()
+    enhancer = ImageEnhance.Contrast(image)
+    image = enhancer.enhance(1.5)
+    #image.show()
+    other =  get_text_info(image, True)[0][0]
+    results.append((other, get_first_n_results(other + " \"recipe\"", 4)))
 
     return structure_payload(results, session, db_manager)
 

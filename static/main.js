@@ -104,6 +104,20 @@ lightbulb.addEventListener("click", function() {
             }).done(function(data) {
                 console.log(data);
                 lightbulb.src = "/static/fa-lightbulb.png"
+                data = JSON.parse(data);
+                var blurbTitle = document.getElementById('blurb-title');
+                var blurbText = document.getElementById('blurb-text');
+                blurbTitle.innerHTML = data['result']['name'];
+                blurbText.innerHTML = data['result']['blurb'];
+
+                var picContainer = document.getElementById('pic-container');
+                while (picContainer.firstChild) {
+                    picContainer.removeChild(picContainer.firstChild)
+                }
+                var picture = document.createElement("IMG");
+                picture.src = data['result']['pics'];
+                picture.height=300;
+                picContainer.appendChild(picture)
                 openNav();
                 didElm.href = data.result.did;
             });
@@ -198,6 +212,15 @@ function onHold(e) {
                 var blurbText = document.getElementById('blurb-text');
                 blurbTitle.innerHTML = data['result']['name'];
                 blurbText.innerHTML = data['result']['blurb'];
+
+                var picContainer = document.getElementById('pic-container');
+                while (picContainer.firstChild) {
+                    picContainer.removeChild(picContainer.firstChild)
+                }
+                var picture = document.createElement("IMG");
+                picture.src = data['result']['pics'];
+                picture.height=300;
+                picContainer.appendChild(picture)
                 openNav();
                 didElm.href = data.result.did;
             });

@@ -83,7 +83,14 @@ def recommend():
         - Tapped coordinate
         - Mode
     '''
-    pass
+
+    img = request.form['image']
+    image_data = re.sub('^data:image/.+;base64,', '', img).decode('base64')
+    image = Image.open(cStringIO.StringIO(image_data))
+
+    out_result = recommend_backend(image, session, dbManager)
+    
+    return json.dumps({'status': 'success', 'result': out_result})
 
 @app.route("/yes_no_feedback", methods=['GET', 'POST'])
 def simple_feedback():
