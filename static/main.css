@@ -6,3 +6,114 @@
     height: 100%;
     object-fit: cover;
 }
+
+#recommend {
+    position: fixed;
+    bottom: 5%;
+    left: 30%;
+    height: 15%;
+    width: 40%;
+}
+
+#recommend img {
+    width: 100%;
+}
+
+#recommend a {
+    width: 100%;
+}
+
+#recommend i {
+    color: white;
+    text-align: center;
+    font-size: 10em;
+    width: 100%;
+}
+
+#card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    margin: 0 auto;
+    /* width: 0%; */
+    width: 90%; 
+    height: 90%;
+}
+
+.card-title {
+    font-size: 5rem;
+}
+
+.card-text {
+    font-size: 2rem;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(55,55,55, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%; 
+    width: 100%;
+    text-align: center; 
+    margin-top: 30px; 
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #f1f1f1;
+    display: block; 
+    transition: 0.3s;
+}
+
+.overlay-content h4 {
+    font-size: 60px;
+    color: white;
+}
+
+.overlay-content p {
+    font-size: 50px;
+    color: white;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    bottom: 100px;
+    left: 10%;
+    font-size: 60px;
+}
+
+.overlay .acceptbtn {
+    position: absolute;
+    bottom: 100px;
+    right: 10%;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}

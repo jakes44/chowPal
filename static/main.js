@@ -2,8 +2,44 @@
 var video = document.getElementById('video');
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
+var didElm = document.getElementById('did');
+var lightbulb = document.getElementById("lightbulb");
 
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
 
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+    var fd = new FormData();
+    fd.append('did', didElm.href);
+    fd.append('like', 0);
+    $.ajax({
+        type: 'POST',
+        url: '/process_menu',
+        data: fd,
+        processData: false,
+        contentType: false
+    }).done(function(data) {
+        console.log(data);
+    });
+}
+
+function acceptFood() {
+    document.getElementById("myNav").style.width = "0%";
+    var fd = new FormData();
+    fd.append('did', didElm.href);
+    fd.append('like', 1);
+    $.ajax({
+        type: 'POST',
+        url: '/process_menu',
+        data: fd,
+        processData: false,
+        contentType: false
+    }).done(function(data) {
+        console.log(data);
+    });
+}
 
 // Get access to the camera!
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -16,6 +52,46 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         // }
     });
 }
+
+lightbulb.addEventListener("click", function() {
+    lightbulb.src = "/static/fa-lightbulb.gif"
+    var vidWidth = video.videoWidth;
+    var vidHeight = video.videoHeight;
+    context.drawImage(video, 0, 0, vidWidth, vidHeight);
+    canvas.toBlob(function(blob) {
+        // Debug stuff
+        console.log(blob);
+        img = new Image();
+        img.src = URL.createObjectURL(blob);
+        console.log(img);
+        // document.body.appendChild(img);
+        // context.drawImage(img, 0, 0, vidWidth, vidHeight);
+        // End Debug
+
+        // Post request      
+        var reader = new FileReader()
+
+        reader.onload = function(event) {
+            var fd = new FormData();
+            fd.append('image', event.target.result);
+
+            $.ajax({
+                type: 'POST',
+                url: '/recommend',
+                data: fd,
+                processData: false,
+                contentType: false
+            }).done(function(data) {
+                console.log(data);
+                lightbulb.src = "/static/fa-lightbulb.png"
+                openNav();
+                didElm.href = data.did;
+            });
+        };
+    
+        reader.readAsDataURL(blob)
+    }, 'image/jpeg');
+})
 
 // console.log(vidWidth);
 // console.log(vidHeight);
@@ -75,26 +151,11 @@ function onHold(e) {
         img = new Image();
         img.src = URL.createObjectURL(blob);
         console.log(img);
-        document.body.appendChild(img);
+        // document.body.appendChild(img);
         // context.drawImage(img, 0, 0, vidWidth, vidHeight);
         // End Debug
-        // Post request
 
-        // var reader = new FileReader();
-        // reader.onload = function(event){
-        //     var fd = new FormData();
-        //     fd.append('fname', 'image.jpg');
-        //     fd.append('data', event.target.result);
-        //     fd.append('x', x);
-        //     fd.append('y', y);
-        //     var xhr = new XMLHttpRequest();
-        //     console.log(fd);
-        //     xhr.open('POST', '/process_menu', true);
-        //     xhr.setRequestHeader('Content-Type', 'application/json');
-        //     xhr.send(fd);
-        // };      
-        // reader.readAsDataURL(blob);
-        
+        // Post request      
         var reader = new FileReader()
 
         reader.onload = function(event) {
@@ -111,27 +172,12 @@ function onHold(e) {
                 contentType: false
             }).done(function(data) {
                 console.log(data);
+                openNav();
+                didElm.href = data.did;
             });
         };
 
         reader.readAsDataURL(blob)
-
-        //var xhr = new XMLHttpRequest();
-        //xhr.open('POST', '/process_menu', true);
-        //var fd = {
-        //    'image': blob,
-        //    'x': x,
-        //    'y': y
-        //};
-        //var fd = new FormData();
-        //fd.set('image', blob);
-        //fd.set('x', x);
-        //fd.set('y', y);
-        //console.log("HIIII")
-        //console.log(fd);
-        //xhr.setRequestHeader('Content-Type', 'application/json');
-        //console.log(fd)
-        //xhr.send(JSON.stringify(fd));
     }, 'image/jpeg');
 }
 
