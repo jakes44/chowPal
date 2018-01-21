@@ -62,8 +62,43 @@ class DBManager(object):
 
         return uid
 
-    def add_user_choice():
-        pass
+    def add_user_choice(self, uid, did, point):
+        cid = uuid.uuid4().hex
+
+        query = 'INSERT INTO choices (uid, did, cid, point) VALUES (?, ?, ?, ?)'
+
+        self._c.execute(query, (uid, did, cid, point))
+
+        self._db.commit()
+
+        return cid
+
+    def add_user_rating(self, cid, rating):
+        query = 'SELECT * FROM choices WHERE cid = ?'
+
+        res = self._c.execute(query, (cid)).fetchall()
+
+        if len(res):
+            query = 'INSERT INTO choices (rating) VALUES (?) WHERE cid = ?'
+            self._c.execute(query, (rating, cid))
+            self._db.commit()
+
+        return False
+
+    def import_restaurant_info(self, rest_obj):
+        restaurant = rest_obj['restaurant']
+
+        for dish in rest_obj['dishes']:
+            name = dish['name']
+            blurb = dish['blurb']
+            health_info = dish['health_info']
+
+            did = generate_did(restaurant, name)
+
+            query = "INSERT INTO co_data VALUES (?, ?, ?)"
+
+            self._c.execute(query, (did, blurb, health_info))
+            self._db.commit()
 
     def close(self):
         self._db.close()
