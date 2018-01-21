@@ -149,8 +149,8 @@ def process_info(image, x, y):
             enhancer = ImageEnhance.Contrast(image)
             image = enhancer.enhance(1.5)
             image.show()
-            sent, (l,t,w,h) =  get_text_info(image, True)[0]
-            results.append((sent, get_first_n_results(sent + " \"recipe\"", 4)))
+            other, (l,t,w,h) =  get_text_info(image, True)[0]
+            results.append((other, get_first_n_results(other + " \"recipe\"", 4)))
 
     # image.show()
     
